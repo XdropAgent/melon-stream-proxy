@@ -32,7 +32,7 @@ const char* WS_PATH = "/ws/stream?token=esp32-melon-01";
 
 // Firebase
 const char* FIREBASE_HOST = "monitoring-tanaman-d2cd2-default-rtdb.firebaseio.com";
-const char* FIREBASE_AUTH = "AIzaSyCmIIEjajnv7m95T4gMoUUMCwFcf2qwClw";
+const char* FIREBASE_AUTH = "YOUR_FIREBASE_API_KEY";
 
 // Jadwal auto capture (jam WIB)
 const int JADWAL_JAM[] = {12, 16, 20};
