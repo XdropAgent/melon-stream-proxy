@@ -291,7 +291,7 @@ bool uploadToFirebase() {
 
     WiFiClientSecure client;
     client.setInsecure();
-    client.setTimeout(20);
+    client.setTimeout(60);
 
     if (!client.connect(FIREBASE_HOST, 443)) {
       Serial.println("Gagal konek Firebase");
@@ -304,7 +304,7 @@ bool uploadToFirebase() {
 
     int sent = 0;
     while (sent < (int)b64.length()) {
-      int end = min(sent + 512, (int)b64.length());
+      int end = min(sent + 256, (int)b64.length());
       client.print(b64.substring(sent, end));
       sent = end;
     }
@@ -313,7 +313,7 @@ bool uploadToFirebase() {
 
     unsigned long timeout = millis();
     while (client.available() == 0) {
-      if (millis() - timeout > 20000) {
+      if (millis() - timeout > 60000) {
         Serial.println("Response timeout");
         client.stop();
         delay(2000);
@@ -480,14 +480,14 @@ bool initCamera() {
   config.pixel_format = PIXFORMAT_JPEG;
   config.grab_mode    = CAMERA_GRAB_LATEST;
   config.fb_location  = CAMERA_FB_IN_PSRAM;
-  config.jpeg_quality = 12;
+  config.jpeg_quality = 20;
   config.fb_count     = 2;
 
   if (psramFound()) {
-    config.frame_size   = FRAMESIZE_VGA;
-    config.jpeg_quality = 10;
-  } else {
     config.frame_size   = FRAMESIZE_QVGA;
+    config.jpeg_quality = 18;
+  } else {
+    config.frame_size   = FRAMESIZE_QQVGA;
     config.jpeg_quality = 14;
   }
 
