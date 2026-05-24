@@ -27,7 +27,7 @@ const char* password = "PASSWORD_WIFI";
 
 // VPS Proxy (WebSocket stream)
 const char* WS_HOST = "43.134.230.63";
-const int   WS_PORT = 8080;
+const int   WS_PORT = 80;
 const char* WS_PATH = "/ws/stream?token=esp32-melon-01";
 
 // Firebase
