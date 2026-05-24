@@ -25,9 +25,9 @@
 const char* ssid     = "NAMA_WIFI";
 const char* password = "PASSWORD_WIFI";
 
-// VPS Proxy (WebSocket stream)
-const char* WS_HOST = "43.134.230.63";
-const int   WS_PORT = 80;
+// VPS Proxy (WebSocket stream via Cloudflare Tunnel)
+const char* WS_HOST = "stream.xdrop-agent.my.id";
+const int   WS_PORT = 443;
 const char* WS_PATH = "/ws/stream?token=esp32-melon-01";
 
 // Firebase
@@ -553,10 +553,11 @@ void setup() {
   syncNTP();
 
   // WebSocket stream
-  wsClient.begin(WS_HOST, WS_PORT, WS_PATH);
+  // SSL WebSocket (port 443 via Cloudflare Tunnel)
+  wsClient.beginSSL(WS_HOST, WS_PORT, WS_PATH);
   wsClient.onEvent(wsEvent);
   wsClient.setReconnectInterval(5000);
-  Serial.println("[WS] Connecting to proxy...");
+  Serial.println("[WS] Connecting to proxy via WSS...");
 
   Serial.println("==============================");
   Serial.println("Fitur: Stream + Auto Capture + Manual Capture + Watermark");
