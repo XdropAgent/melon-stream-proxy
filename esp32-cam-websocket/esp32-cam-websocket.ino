@@ -25,7 +25,7 @@ const char* WIFI_SSID     = "YOUR_WIFI_SSID";
 const char* WIFI_PASSWORD = "YOUR_WIFI_PASSWORD";
 
 // VPS Proxy
-const char* WS_HOST       = "YOUR_VPS_IP";  // e.g., "103.x.x.x"
+const char* WS_HOST       = "43.134.230.63";
 const int   WS_PORT       = 8080;
 const char* WS_PATH       = "/ws/stream?token=esp32-melon-01";
 
